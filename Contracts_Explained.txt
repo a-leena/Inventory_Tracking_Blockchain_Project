@@ -1,0 +1,69 @@
+* events are created and emitted in contracts for the javascript code, in order to connect the contract to the frontend.
+
+----------------------------------
+
+Manager.sol=>
+
+1. Define "item" as a structure
+2. Create some mappings 
+	-> One mapping is of integer and item, so that we have a list items where each item is mapped to a unique order id. This mapping (list) is called "itemMap".
+
+3. Define the function to take order from the customer. This function takes p_id, name, desc, quantity, totalcost as arguments. OrderID is created by concatenating the pid and quantity.
+Using this orderID, add the item to the itemMap list.
+return the orderID.
+
+4. Define the setflowoforder function. This will take the orderID of the item and the addresses of all the participants involved as arguments. If any address is 0, then that means that party isn't involved.
+All the involved parties' addresses (blockchain network wise) need to be added into an array of addresses. This array will in turn be mapped to the orderID. This map will be part of the "flowOfObject" list. 
+
+General Flow order: 
+Manufacturer -> Export Land Transport -> Export Customs -> Export port Authority -> Shipping -> Import port Authority -> Import customs -> Import Land Transport -> Distributor
+
+5. Define a function to transfer the item from manager to the next participant in line of flow. "TransferOfPossession"
+
+----------------------------------
+
+
+LandTransport.sol
+
+1. Define a function for loading the order into the land transport. Set the status of the order as Being loaded into transport, set the time of loading and then call the event OrderLoaded, for that particular orderID.
+
+2. Define a function for unloading the order from the land transport. And set the status again. Transfer the possession after OrderUnloaded event is emitted. 
+
+
+----------------------------------
+
+
+Shipment.sol
+
+1. Define the function for the shipment arriving at the port. Set the status of the order. Transfer the possession of the order. Call the Arrival event.
+
+2. Define the function for the shipment departing the port. Set the status of the order. Call the departure event.
+
+----------------------------------
+
+PortAuthority.sol
+
+1. Define function for loading orders into the ship (for departure). Set the status, call the departure event.
+
+2. Define function for unloading orders from the ship , into the port. Set the status, call the arrival event. Transfer the possession of the order. 
+
+----------------------------------
+
+Customs.sol 
+to check if the item passes the weight conditions
+
+1. Define a function to check if the weight of the item at the manager's end and manufacturer's end match
+
+2. Define a function to check if the weight of the item crosses the ideal weight limit or not.
+
+----------------------------------
+
+Distributor.sol
+1. Define a function to receieve the order.
+
+
+----------------------------------
+
+Manufacturer.sol
+manufactured() function
+----------------------------------

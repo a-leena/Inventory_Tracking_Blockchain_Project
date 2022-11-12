@@ -1,0 +1,112 @@
+Private key- 
+f89229e0cee6a5878776a9767c8aa4bdd4bcc7378885f8bc07a5c5e934445fac
+
+Account address-
+0x5264b5EBC42339F9B7853d77047F2590D176C6c9
+
+Contract address-
+0x527CFFA4B276e945b7f0473068C71edFB949b9a6
+
+Contract abi-
+[
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "index",
+				"type": "uint256"
+			}
+		],
+		"name": "Added",
+		"type": "event"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_productId",
+				"type": "uint256"
+			},
+			{
+				"name": "info",
+				"type": "string"
+			}
+		],
+		"name": "addState",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_a",
+				"type": "string"
+			},
+			{
+				"name": "_b",
+				"type": "string"
+			}
+		],
+		"name": "concat",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_text",
+				"type": "string"
+			},
+			{
+				"name": "_date",
+				"type": "string"
+			}
+		],
+		"name": "newItem",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_productId",
+				"type": "uint256"
+			}
+		],
+		"name": "searchProduct",
+		"outputs": [
+			{
+				"name": "",
+				"type": "string"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
