@@ -8,8 +8,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="SHORTCUT ICON" href="images/fibble.png" type="image/x-icon" />
-  <link rel="ICON" href="images/fibble.png" type="image/ico" />
+  <link rel="SHORTCUT ICON" href="images/product.jpg" type="image/x-icon" />
+  <link rel="ICON" href="images/product.jpg" type="image/ico" />
 
   <title>Decentralized Application</title>
 
@@ -121,7 +121,22 @@
   <?php
   } else {
     include 'redirection.php';
-    redirect('checkproduct.php');
+    //manager
+    if ($_SESSION['role']==1) {
+      redirect('createOrder.php');
+    }
+    //customer
+    else if ($_SESSION['role']==2) {
+      redirect('checkproduct.php');
+    }
+    //manufacturer
+    else if ($_SESSION['role']==3) {
+      redirect('addproduct.php');
+    }
+    //all other enities
+    else {
+      redirect('updateOrderStatus.php');
+    }
   }
   ?>
 

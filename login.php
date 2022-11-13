@@ -37,6 +37,10 @@ session_start(); ?>
         $row = mysqli_fetch_array($qry_result);
         $_SESSION['role'] = $row['user_role'];
         $_SESSION['username'] = $row['username'];
+        $uname = $_SESSION['username'];
+        if ($_SESSION['role']==2) {
+          $_SESSION['cid'] = mysqli_fetch_array(mysqli_query($conn,"SELECT cid from customers where username='$uname';"))['cid'];
+        }
         include 'redirection.php';
         header('Location: index.php');
       } else {

@@ -323,43 +323,43 @@ const inventory_tracking_ABI = [
 //Contract addresses:
 
 //Manager.sol: 
-const managerAddress = "0x7B7BcF566f82c78a06f48B4F4Dda8940aB7163ED"
+const managerAddress = "0xfC7723bF47bC3276089fb60b7B16d0E181d0D4Fe"
 //Manufacturer.sol: 
-const manufacturerAddress = "0x7318c03133491D9dE905FA7eD23c05E7a6588015"
+const manufacturerAddress = "0x7CB3009163cc1E3A89D93940370DA6561685071b"
 //LandTransport.sol: 
-const LTAddress = "0x4162206011D949b8bE06a25b539FE65474D0624D"
+const LTAddress = "0xcCDe99Ffc72DB8A6eaad84C3B8568D106203E780"
 //Customs.sol: 
-const customsAddress = "0x5cCF1FA42674CeE5B175B0Fe18d3bc09003B9436"
+const customsAddress = "0xc2384e44CF523Eaf42F44cf8217547A6BB06f0f2"
 //PortAuthority.sol: 
-const portAuthAddress = "0x315334199A058803a5322a51139CbD410e445747"
+const portAuthAddress = "0x3948Fe20abBAD3de550cBF73af08bc0A5cBE012a"
 //Shipment.sol: 
-const shipmentAddress = "0xC9Df14c45ff28f6E31AE66bCC115E7486051839b"
+const shipmentAddress = "0x6768Db03D008dF0B01bAcC677a12E15ec735F103"
 //Distributor.sol: 
-const distributorAddress = "0xCfb531B2691F8b1d50A77097D3ee625dAaA3F7E2"
+const distributorAddress = "0x276a2365C9A98dA0a4aee6B1D569ae64BE089aB8"
 
-//Instantiat the smart contracts in order to call the functions in JS-
-const web3 = new Web3(new Web3.providers.HttpProvider('HTTP://127.0.0.1:7545'));
-const contracts = new web3.eth.Contract(inventory_tracking_ABI, web3);
+// //Instantiat the smart contracts in order to call the functions in JS-
+// const web3 = new Web3(new Web3.providers.HttpProvider('HTTP://127.0.0.1:7545'));
+// const contracts = new web3.eth.Contract(inventory_tracking_ABI, web3);
 
 
-//reading value from a smart contract
-var pid, userID, prodname, desc, quantity, totalcost;
-var order_id;
-contracts.methods.setOrder(pid,userID,prodname,desc,quantity,totalcost).call(function (err, res) {
-	if (err) {
-	  console.log("An error occured", err);
-	  return;
-	}
-	order_id = res;
-	console.log("The OrderID is: ", res);
-  })
+// //reading value from a smart contract
+// var pid, userID, prodname, desc, quantity, totalcost;
+// var order_id;
+// contracts.methods.setOrder(pid,userID,prodname,desc,quantity,totalcost).call(function (err, res) {
+// 	if (err) {
+// 	  console.log("An error occured", err);
+// 	  return;
+// 	}
+// 	order_id = res;
+// 	console.log("The OrderID is: ", res);
+//   })
 
-//passing values into a smartcontract
-contracts.methods.currentStatusOfOrder(order_id)
-  .send({ from: senderAddress }, function (err, res) {
-    if (err) {
-      console.log("An error occured", err);
-      return;
-    }
-    console.log(res);
-  })
+// //passing values into a smartcontract
+// contracts.methods.currentStatusOfOrder(order_id)
+//   .send({ from: senderAddress }, function (err, res) {
+//     if (err) {
+//       console.log("An error occured", err);
+//       return;
+//     }
+//     console.log(res);
+//   })

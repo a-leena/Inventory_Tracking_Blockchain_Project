@@ -23,7 +23,7 @@
     if ($_SESSION['role'] == 2) {
     ?>
       <li class="nav-item">
-        <a class="nav-link" href="#">Buy Products</a>
+        <a class="nav-link" href="buyproduct.php">Buy Products</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="checkproduct.php">Check Product Status</a>

@@ -8,8 +8,8 @@ session_start(); ?>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="SHORTCUT ICON" href="images/fibble.png" type="image/x-icon" />
-  <link rel="ICON" href="images/fibble.png" type="image/ico" />
+  <link rel="SHORTCUT ICON" href="images/product.jpg" type="image/x-icon" />
+  <link rel="ICON" href="images/product.jpg" type="image/ico" />
 
   <title>Create New Account</title>
 
@@ -76,6 +76,7 @@ session_start(); ?>
             do {
               $cid = rand(1,9999);
               $res = mysqli_query($conn, "INSERT INTO customers VALUE('$cid','$username')");
+              $_SESSION['cid'] = $cid;
             } while(!$res);
           }
           include 'redirection.php';
