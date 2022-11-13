@@ -1,5 +1,4 @@
 pragma solidity ^0.4.21;
- //import "./Ownable.sol";
  import "./Manager.sol";
  import "./LandTransport.sol";
  import "./Distributor.sol";
@@ -19,9 +18,6 @@ pragma solidity ^0.4.21;
         statsMap[orderId].timeToNextEntity = now + _expectedTimeOfDeparture; // total time required to transfer to next entity.
     }
 
-    // function AddMoney(address AccountHolder, uint Amount){
-    //     BalanceOfMoney[AccountHolder]=BalanceOfMoney[AccountHolder]+Amount;
-    // }
 
     function orderConfirmed(uint orderId) public {
         require(msg.sender==flowOfObject[orderId].Addresses[currentaddress[orderId]]);

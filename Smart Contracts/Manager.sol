@@ -5,8 +5,6 @@ contract main {
     struct item {            // Structure to tell about the order item which is placed;
 
         uint product_Id;
-        string name;
-        string description;
         uint quantity;
         uint totalCost;
         uint weight;
@@ -20,8 +18,6 @@ contract main {
 
     mapping(uint => item)public itemMap; //list items mapped to their unique orderIDs
     mapping(uint => bool)public bankConfirmation;   //boolean values mapped to each orderIDs
-    // mapping(address => uint)BalanceOfMoney;  //list of balance amounts mapped to address of each entity
-    // mapping(address => uint)commisionAmount; //percentage of the total cost that goes to an entity involved mapped to the entity's address
     mapping(uint => uint)currentaddress; // an index mapped to the orderID that tells current position in order of flow
 
     //  0xca35b7d915458ef540ade6068dfe2f44e8fa733c is Manager.
@@ -52,17 +48,13 @@ contract main {
     //for each orderID we will store the status (checkpoint, time of that checkpoint, time to next checkpoint) and it will be updated as the item moves up the flow order
     mapping(uint => stats)public statsMap;
 
-    function setOrder(uint p_Id,uint user_id, string name,string Description,uint Quantity, uint _totalCost) public returns(uint ) {
+    function setOrder(uint p_Id,uint user_id,uint Quantity, uint _cost) public returns(uint ) {
        //Function to set or take the order from the Customer;
        require(msg.sender==0xca35b7d915458ef540ade6068dfe2f44e8fa733c);
        uint orderId = uint(keccak256(p_Id + Quantity + user_id));
        itemMap[orderId].product_Id = p_Id;
-       itemMap[orderId].name = name;
-       itemMap[orderId].description = Description;
        itemMap[orderId].quantity = Quantity ;
-       itemMap[orderId].totalCost = _totalCost;
-    //    commisionAmount[0x14723a09acff6d2a60dcdf7aa4aff308fddc160c]=70; // to the manufacturer
-    //    commisionAmount[0x4b0897b0513fdc7c541b6d9d7e929c4e5364d2db]=30; // for exportlandtransport
+       itemMap[orderId].totalCost = _cost*Quantity;
        return orderId;
     }
 
@@ -133,3 +125,4 @@ contract main {
   }
 
 }
+   
